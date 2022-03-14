@@ -3,12 +3,10 @@
   <mat-form-field class="full-width">
     <mat-label>Nombres</mat-label>
     <input formControlName="name" autocomplete="off" matInput />
-    <mat-error>Falta documento</mat-error>
   </mat-form-field>
     <mat-form-field class="full-width">
     <mat-label>Apellidos</mat-label>
     <input formControlName="lastName" autocomplete="off" matInput />
-    <mat-error>Falta documento</mat-error>
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-label>Celular</mat-label>
@@ -18,7 +16,6 @@
       autocomplete="off"
       matInput
     />
-    <mat-error>Falta celular</mat-error>
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-label>Fecha de nacimiento</mat-label>
@@ -31,7 +28,6 @@
     />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    <mat-error>Falta fecha</mat-error>
   </mat-form-field>
   <label id="radio-group-label">Sexo:</label>
   <mat-radio-group
@@ -58,5 +54,3 @@
     </button>
   </div>
 </form>
-<pre>Válido: {{formulario.valid}}</pre>
-<pre>{{formulario.value | json}}</pre>
