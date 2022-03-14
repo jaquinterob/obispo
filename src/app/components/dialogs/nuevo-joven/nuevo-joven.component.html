@@ -1,0 +1,62 @@
+<h2>Adicionar Joven</h2>
+<form [formGroup]="formulario" (ngSubmit)="guardarNuevoJoven()">
+  <mat-form-field class="full-width">
+    <mat-label>Nombres</mat-label>
+    <input formControlName="name" autocomplete="off" matInput />
+    <mat-error>Falta documento</mat-error>
+  </mat-form-field>
+    <mat-form-field class="full-width">
+    <mat-label>Apellidos</mat-label>
+    <input formControlName="lastName" autocomplete="off" matInput />
+    <mat-error>Falta documento</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Celular</mat-label>
+    <input
+      type="number"
+      formControlName="phone"
+      autocomplete="off"
+      matInput
+    />
+    <mat-error>Falta celular</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Fecha de nacimiento</mat-label>
+    <input
+      readonly
+      formControlName="dob"
+      autocomplete="off"
+      matInput
+      [matDatepicker]="picker"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error>Falta fecha</mat-error>
+  </mat-form-field>
+  <label id="radio-group-label">Sexo:</label>
+  <mat-radio-group
+    formControlName="gender"
+    aria-labelledby="radio-group-label"
+    class="radio-group"
+  >
+    <mat-radio-button class="radio-button" value="M">
+      Masculino
+    </mat-radio-button>
+    <mat-radio-button class="radio-button" value="F">
+      Fememino
+    </mat-radio-button>
+  </mat-radio-group>
+  <div>
+    <br />
+    <button
+      [disabled]="formulario.invalid"
+      class="full-width"
+      mat-raised-button
+      color="primary"
+    >
+      Guardar
+    </button>
+  </div>
+</form>
+<pre>Válido: {{formulario.valid}}</pre>
+<pre>{{formulario.value | json}}</pre>

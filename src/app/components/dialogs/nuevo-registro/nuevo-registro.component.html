@@ -1,0 +1,53 @@
+<h2>Adicionar Registro</h2>
+<p>
+  para: <i> {{ joven.name }} {{ joven.lastName }}</i>
+</p>
+<form [formGroup]="formulario">
+  <mat-form-field class="full-width">
+    <mat-label>Tipo de registro</mat-label>
+    <mat-select formControlName="type">
+      <mat-option *ngFor="let item of selectTipos" [value]="item.valor">{{
+        item.texto
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Título</mat-label>
+    <input formControlName="title" autocomplete="off" matInput />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Descripción</mat-label>
+    <textarea
+      formControlName="detail"
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      matInput
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fecha</mat-label>
+    <input
+      [max]="date"
+      readonly
+      formControlName="date"
+      matInput
+      [matDatepicker]="picker"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div>
+    <br />
+    <button
+      (click)="guardarNuevoRegistro()"
+      class="full-width"
+      [disabled]="formulario.invalid"
+      mat-raised-button
+      color="primary"
+    >
+      Primary
+    </button>
+  </div>
+</form>

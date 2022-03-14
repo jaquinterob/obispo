@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <span>Obispo</span>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu color="primary" #menu="matMenu">
+    <button navi mat-menu-item>
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button (click)="abrirModalNuevoJoven()" mat-menu-item>
+      <mat-icon>person_add</mat-icon>
+      <span>Agregar Joven</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

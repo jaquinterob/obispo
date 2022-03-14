@@ -1,0 +1,6 @@
+<app-menu (homeEmiter)="getFromMenu()"></app-menu>
+<div class="contenedor row">
+  <div *ngFor="let joven of jovenes" class="col s12 m6 l4">
+    <app-joven-card [joven]="joven"></app-joven-card>
+  </div>
+</div>

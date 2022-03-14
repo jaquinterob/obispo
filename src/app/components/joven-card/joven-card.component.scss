@@ -1,0 +1,39 @@
+.card {
+  margin: 10px 0px;
+}
+
+.ultima-ministracion {
+  color: #3f51b5;
+  font-weight: lighter;
+}
+
+.edad {
+  position: absolute;
+  top: 11px;
+  right: 36px;
+  font-weight: lighter;
+  color: #3f51b5;
+  font-size: 10px;
+}
+
+.hombre {
+  background-color: #f3f9ff;
+}
+
+.mujer {
+  background-color: #fff3fc;
+}
+
+.btn-action {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: gray;
+  font-size: 5px;
+}
+
+.panel {
+  padding: 14px 0px 5px 0px;
+  border: solid white 1px;
+  border-radius: 4px;
+}

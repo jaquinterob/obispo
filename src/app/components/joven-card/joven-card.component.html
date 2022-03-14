@@ -1,0 +1,55 @@
+<mat-card class="card" [ngClass]="{'hombre': joven.gender === 'M', 'mujer':joven.gender === 'F' }">
+  <mat-card-header>
+    <img mat-card-avatar src="../../../assets/user.png" />
+    <mat-card-title>{{joven.name}}</mat-card-title>
+    <mat-card-subtitle>{{joven.lastName}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row panel">
+      <div class="item col s6">
+        <span matBadge="0" matBadgeSize="small" matBadgeOverlap="false"
+          >Talentos</span
+        >
+      </div>
+      <div class="item col s6">
+        <span matBadge="1" matBadgeSize="small" matBadgeOverlap="false"
+          >Deseos</span
+        >
+      </div>
+      <div class="item col s6">
+        <span
+          matBadgeColor="warn"
+          matBadge="1"
+          matBadgeSize="small"
+          matBadgeOverlap="false"
+          >Preocupaciones</span
+        >
+      </div>
+      <div class="item col s6">
+        <span matBadge="1" matBadgeSize="small" matBadgeOverlap="false"
+          >Ministraciones</span
+        >
+      </div>
+    </div>
+    <div class="ultima-ministracion">Celular: {{joven.phone}}</div>
+    <div class="ultima-ministracion">Última ministración: 
+      
+    </div>
+    <div class="edad">{{joven.dob | age}} años</div>
+    <div class="btn-action">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon color="primary">more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button (click)="abrirDialogNuevoRegistro(joven)" mat-menu-item>
+          <mat-icon color="accent">fiber_new</mat-icon>
+          <span>registro</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-card-content>
+</mat-card>
