@@ -7,32 +7,32 @@
   <mat-card-content>
     <div class="row panel">
       <div class="item col s6">
-        <span matBadge="0" matBadgeSize="small" matBadgeOverlap="false"
+        <span [matBadge]="joven.talents" matBadgeSize="small" matBadgeOverlap="false"
           >Talentos</span
         >
       </div>
       <div class="item col s6">
-        <span matBadge="1" matBadgeSize="small" matBadgeOverlap="false"
+        <span [matBadge]="joven.wishes" matBadgeSize="small" matBadgeOverlap="false"
           >Deseos</span
         >
       </div>
       <div class="item col s6">
         <span
           matBadgeColor="warn"
-          matBadge="1"
+          [matBadge]="joven.concerns"
           matBadgeSize="small"
           matBadgeOverlap="false"
           >Preocupaciones</span
         >
       </div>
       <div class="item col s6">
-        <span matBadge="1" matBadgeSize="small" matBadgeOverlap="false"
+        <span [matBadge]="joven.ministrations" matBadgeSize="small" matBadgeOverlap="false"
           >Ministraciones</span
         >
       </div>
     </div>
     <div class="ultima-ministracion">Celular: {{joven.phone}}</div>
-    <div class="ultima-ministracion">Última ministración: 
+    <div class="ultima-ministracion">Última ministración: <em style="color:gray">{{(joven.lastMinistration | date) || 'No registra'}}</em>
       
     </div>
     <div class="edad">{{joven.dob | age}} años</div>

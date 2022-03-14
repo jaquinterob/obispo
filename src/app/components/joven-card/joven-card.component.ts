@@ -10,18 +10,19 @@ import { NuevoRegistroComponent } from '../dialogs/nuevo-registro/nuevo-registro
 })
 export class JovenCardComponent implements OnInit {
   @Input() joven!: Joven;
-  @Output() emitirHome = new EventEmitter<boolean>()
+  @Output() homeEmiter = new EventEmitter<boolean>();
   constructor(private readonly dialog: MatDialog) {}
 
   ngOnInit(): void {
+    console.log(this.joven);
   }
 
-  abrirDialogNuevoRegistro(joven:Joven): void {
-    const dialogRef = this.dialog.open(NuevoRegistroComponent,{data:joven});
+  abrirDialogNuevoRegistro(joven: Joven): void {
+    const dialogRef = this.dialog.open(NuevoRegistroComponent, { data: joven });
     dialogRef.afterClosed().subscribe({
-      next:(res:any)=>{
-        console.log(res);
-      }
-    })
+      next: (res: any) => {
+        this.homeEmiter.emit(true)
+      },
+    });
   }
 }

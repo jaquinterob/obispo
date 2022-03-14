@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getFromMenu() {
+  getChildren() {
     this.getAllJovenes();
   }
 }
