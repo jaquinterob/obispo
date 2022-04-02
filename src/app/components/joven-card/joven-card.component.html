@@ -1,18 +1,27 @@
-<mat-card class="card" [ngClass]="{'hombre': joven.gender === 'M', 'mujer':joven.gender === 'F' }">
+<mat-card
+  class="card"
+  [ngClass]="{ hombre: joven.gender === 'M', mujer: joven.gender === 'F' }"
+>
   <mat-card-header>
     <img mat-card-avatar src="../../../assets/user.png" />
-    <mat-card-title>{{joven.name}}</mat-card-title>
-    <mat-card-subtitle>{{joven.lastName}}</mat-card-subtitle>
+    <mat-card-title>{{ joven.name }}</mat-card-title>
+    <mat-card-subtitle>{{ joven.lastName }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div class="row panel">
       <div class="item col s6">
-        <span [matBadge]="joven.talents" matBadgeSize="small" matBadgeOverlap="false"
+        <span
+          [matBadge]="joven.talents"
+          matBadgeSize="small"
+          matBadgeOverlap="false"
           >Talentos</span
         >
       </div>
       <div class="item col s6">
-        <span [matBadge]="joven.wishes" matBadgeSize="small" matBadgeOverlap="false"
+        <span
+          [matBadge]="joven.wishes"
+          matBadgeSize="small"
+          matBadgeOverlap="false"
           >Deseos</span
         >
       </div>
@@ -26,16 +35,22 @@
         >
       </div>
       <div class="item col s6">
-        <span [matBadge]="joven.ministrations" matBadgeSize="small" matBadgeOverlap="false"
+        <span
+          [matBadge]="joven.ministrations"
+          matBadgeSize="small"
+          matBadgeOverlap="false"
           >Ministraciones</span
         >
       </div>
     </div>
-    <div class="ultima-ministracion">Celular: {{joven.phone}}</div>
-    <div class="ultima-ministracion">Última ministración: <em style="color:gray">{{(joven.lastMinistration | date) || 'No registra'}}</em>
-      
+    <div class="ultima-ministracion">Celular: {{ joven.phone }}</div>
+    <div class="ultima-ministracion">
+      Última ministración:
+      <em style="color: gray">{{
+        (joven.lastMinistration | date) || "No registra"
+      }}</em>
     </div>
-    <div class="edad">{{joven.dob | age}} años</div>
+    <div class="edad">{{ joven.dob | age }} años</div>
     <div class="btn-action">
       <button
         mat-icon-button
@@ -45,9 +60,17 @@
         <mat-icon color="primary">more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <button (click)="abrirPageJoven(joven._id)" mat-menu-item>
+          <mat-icon color="primary">visibility</mat-icon>
+          <span>Mostrar Joven</span>
+        </button>
         <button (click)="abrirDialogNuevoRegistro(joven)" mat-menu-item>
-          <mat-icon color="accent">fiber_new</mat-icon>
-          <span>registro</span>
+          <mat-icon color="primary">notes</mat-icon>
+          <span>Registrar acción</span>
+        </button>
+        <button (click)="eliminarJoven(joven._id)" mat-menu-item>
+          <mat-icon color="warn">delete_forever</mat-icon>
+          <span style="color:red">Eliminar Joven</span>
         </button>
       </mat-menu>
     </div>
