@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
@@ -23,7 +24,8 @@ export class JovenCardComponent implements OnInit {
   constructor(
     private readonly dialog: MatDialog,
     private readonly snack: MatSnackBar,
-    private readonly api: ApiService
+    private readonly api: ApiService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +42,7 @@ export class JovenCardComponent implements OnInit {
   }
 
   abrirPageJoven(_id: string): void {
-    this.snack.open(_id, 'ok', { duration: 3000 });
+    this.router.navigate(['joven', _id]);
   }
 
   eliminarJoven(_id: string): void {

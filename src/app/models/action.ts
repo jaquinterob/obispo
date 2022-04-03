@@ -1,4 +1,4 @@
-export interface Registro {
+export interface Action {
   idYoung: string;
   type: string;
   title: string;
