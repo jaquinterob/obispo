@@ -1,6 +1,28 @@
 <app-menu></app-menu>
-<pre>{{ joven | json }}</pre>
+<app-datos-personales [joven]="joven"></app-datos-personales>
+<mat-stepper orientation="vertical">
+  <mat-step>
+    <ng-template matStepLabel>Ministraciones</ng-template>
+    <ng-template matStepContent> Ministraciones </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Talentos</ng-template>
+    <ng-template matStepContent>
+      <app-talentos [talentos]="talentos"></app-talentos>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Deseos</ng-template>
+    <ng-template matStepContent> Deseos </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Preocupaciones</ng-template>
+    <ng-template matStepContent> Preocupaciones </ng-template>
+  </mat-step>
+</mat-stepper>
+
+<!-- <pre>{{ joven | json }}</pre>
 <pre>{{ ministraciones | json }}</pre>
 <pre>{{ preocupaciones | json }}</pre>
 <pre>{{ deseos | json }}</pre>
-<pre>{{ talentos | json }}</pre>
+<pre>{{ talentos | json }}</pre> -->

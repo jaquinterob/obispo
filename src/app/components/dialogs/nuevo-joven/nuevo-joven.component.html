@@ -4,22 +4,19 @@
     <mat-label>Nombres</mat-label>
     <input formControlName="name" autocomplete="off" matInput />
   </mat-form-field>
-    <mat-form-field class="full-width">
+  <mat-form-field class="full-width">
     <mat-label>Apellidos</mat-label>
     <input formControlName="lastName" autocomplete="off" matInput />
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-label>Celular</mat-label>
-    <input
-      type="number"
-      formControlName="phone"
-      autocomplete="off"
-      matInput
-    />
+    <input type="number" formControlName="phone" autocomplete="off" matInput />
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-label>Fecha de nacimiento</mat-label>
     <input
+      (click)="picker.open()"
+      [max]="today"
       readonly
       formControlName="dob"
       autocomplete="off"

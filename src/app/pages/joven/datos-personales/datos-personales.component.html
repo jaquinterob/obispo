@@ -1,0 +1,14 @@
+<div class="contenedor">
+  <div class="contenedor-foto">
+    <img class="foto" src="./assets/user.png" alt="" />
+  </div>
+  <div>
+    <div class="nombre">{{ joven.name }}</div>
+    <div class="apellidos">{{ joven.lastName }}</div>
+    <div class="contenedor-telefono">
+      <span>{{ joven.phone }}</span
+      ><img class="icon-w" src="./assets/w.png" alt="" />
+    </div>
+  </div>
+  <div class="edad">{{ joven.dob | age }} años</div>
+</div>

@@ -34,8 +34,8 @@ export class JovenComponent implements OnInit {
 
   getJoven(): void {
     this.api.getJoven(this._id).subscribe({
-      next: (joven: Joven) => {
-        this.joven = joven;
+      next: (res: any) => {
+        this.joven = res.young;
       },
       error: (error: ErrorHandler) => {
         console.error(error);

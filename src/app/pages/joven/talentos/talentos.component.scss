@@ -1,0 +1,39 @@
+.contenedor {
+}
+
+.card-action {
+  background-color: aqua;
+  margin: 4px;
+  padding: 6px;
+  position: relative;
+  background-color: #eaedf9;
+  border-radius: 2px;
+}
+
+.date-action {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  font-size: 9px;
+  color: #606fc5;
+}
+
+.title-action {
+  font-size: 16px;
+}
+
+.detail-action {
+  font-style: italic;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.cinta {
+  background-color: #606fc5;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 0px 0px 4px 4px;
+}

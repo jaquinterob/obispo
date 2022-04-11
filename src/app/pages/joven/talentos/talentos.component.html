@@ -1,0 +1,13 @@
+<div class="contenedor row">
+  <div *ngFor="let talento of talentos" class="card-action">
+    <div class="title-action">
+      {{ talento.title }}
+    </div>
+    <div class="detail-action">
+      {{ talento.detail }}
+    </div>
+    <div class="date-action">{{ talento.date | date }}</div>
+    <div class="cinta"></div>
+  </div>
+</div>
+

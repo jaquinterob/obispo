@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class NuevoJovenComponent implements OnInit {
   formulario!: FormGroup;
+  today = new Date()
   constructor(
     private readonly fb: FormBuilder,
     private readonly api: ApiService,

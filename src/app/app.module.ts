@@ -16,6 +16,8 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { JovenCardComponent } from './components/joven-card/joven-card.component';
 import { AgePipe } from './pipes/age.pipe';
 import { NuevoRegistroComponent } from './components/dialogs/nuevo-registro/nuevo-registro.component';
+import { DatosPersonalesComponent } from './pages/joven/datos-personales/datos-personales.component';
+import { TalentosComponent } from './pages/joven/talentos/talentos.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { NuevoRegistroComponent } from './components/dialogs/nuevo-registro/nuev
     JovenCardComponent,
     AgePipe,
     NuevoRegistroComponent,
+    DatosPersonalesComponent,
+    TalentosComponent,
   ],
   imports: [
     BrowserModule,
