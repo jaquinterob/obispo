@@ -26,10 +26,16 @@ export class JovenComponent implements OnInit {
   ngOnInit(): void {
     this._id = this.activatedRoute.snapshot.params['_id'];
     this.getJoven();
-    this.getMinistraciones();
-    this.getPreocupaciones();
-    this.getDeseos();
-    this.geTalentos();
+    this.refresh(true);
+  }
+
+  refresh(res: boolean): void {
+    if (res) {
+      this.getMinistraciones();
+      this.getPreocupaciones();
+      this.getDeseos();
+      this.geTalentos();
+    }
   }
 
   getJoven(): void {

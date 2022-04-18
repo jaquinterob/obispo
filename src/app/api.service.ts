@@ -72,4 +72,10 @@ export class ApiService {
       `${environment.server}:5050/api_mongo/test/action/${_id}/talento`
     );
   }
+
+  deleteAction(_id:string):Observable<any>{
+     return this.http.delete(
+       `${environment.server}:5050/api_mongo/test/action/${_id}`
+     );
+  }
 }

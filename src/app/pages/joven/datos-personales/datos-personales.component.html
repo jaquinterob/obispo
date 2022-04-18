@@ -1,4 +1,11 @@
-<div class="contenedor" *ngIf="joven._id !== ''">
+<div
+  class="contenedor"
+  *ngIf="joven._id !== ''"
+  [ngClass]="{
+    'fondo-hombre': joven.gender === 'M',
+    'fondo-mujer': joven.gender === 'F'
+  }"
+>
   <div class="contenedor-foto">
     <img class="foto" src="./assets/user.png" alt="" />
   </div>
@@ -11,4 +18,12 @@
     </div>
   </div>
   <div class="edad">{{ joven.dob | age }} años</div>
+  <div class="agregar-action">
+    <button
+      mat-icon-button
+      (click)="abrirModalNuevoRegistro(joven)"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>

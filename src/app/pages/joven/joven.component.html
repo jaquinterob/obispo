@@ -1,34 +1,36 @@
 <app-menu></app-menu>
-<app-datos-personales [joven]="joven"></app-datos-personales>
+<app-datos-personales (emisor)="refresh($event)" [joven]="joven"></app-datos-personales>
 <mat-stepper orientation="vertical">
   <mat-step>
     <ng-template matStepLabel
-      >Ministraciones [{{ joven.ministrations }}]</ng-template
+      >Ministraciones</ng-template
     >
     <ng-template matStepContent>
       <app-ministraciones
+      (emisor)="refresh($event)"
         [ministraciones]="ministraciones"
       ></app-ministraciones>
     </ng-template>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Talentos [{{ joven.talents }}]</ng-template>
+    <ng-template matStepLabel>Talentos</ng-template>
     <ng-template matStepContent>
-      <app-talentos [talentos]="talentos"></app-talentos>
+      <app-talentos (emisor)="refresh($event)" [talentos]="talentos"></app-talentos>
     </ng-template>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Deseos [{{ joven.wishes }}]</ng-template>
+    <ng-template matStepLabel>Deseos</ng-template>
     <ng-template matStepContent>
-      <app-deseos [deseos]="deseos"></app-deseos>
+      <app-deseos (emisor)="refresh($event)" [deseos]="deseos"></app-deseos>
     </ng-template>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel
-      >Preocupaciones [{{ joven.concerns }}]</ng-template
+      >Preocupaciones</ng-template
     >
     <ng-template matStepContent>
       <app-preocupaciones
+      (emisor)="refresh($event)"
         [preocupaciones]="preocupaciones"
       ></app-preocupaciones>
     </ng-template>

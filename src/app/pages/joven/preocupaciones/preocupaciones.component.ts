@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ErrorHandler, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ApiService } from 'src/app/api.service';
 import { Action } from 'src/app/models/action';
 
 @Component({
@@ -8,10 +10,26 @@ import { Action } from 'src/app/models/action';
 })
 export class PreocupacionesComponent implements OnInit {
   @Input() preocupaciones!: Action[];
-  constructor() {}
+  @Output() emisor = new EventEmitter();
+  constructor(
+    private readonly api: ApiService,
+    private readonly snack: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     console.log();
-
+  }
+  deleteAction(_idAction: string): void {
+    this.api.deleteAction(_idAction).subscribe({
+      next: (res: any) => {
+        this.snack.open(res.message, 'ok', { duration: 3000 });
+        this.emisor.emit(true);
+      },
+      error: (error: ErrorHandler) => {
+        this.snack.open('Error al tratar de aliminar el registro', 'ok', {
+          duration: 3000,
+        });
+      },
+    });
   }
 }

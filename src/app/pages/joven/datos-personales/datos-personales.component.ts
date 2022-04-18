@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NuevoRegistroComponent } from 'src/app/components/dialogs/nuevo-registro/nuevo-registro.component';
 import { Joven } from 'src/app/models/joven';
 
 @Component({
@@ -8,7 +11,11 @@ import { Joven } from 'src/app/models/joven';
 })
 export class DatosPersonalesComponent implements OnInit {
   @Input() joven!: Joven;
-  constructor() {}
+  @Output() emisor = new EventEmitter();
+  constructor(
+    private readonly dialog: MatDialog,
+    private readonly snack: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.joven = {
@@ -24,5 +31,12 @@ export class DatosPersonalesComponent implements OnInit {
       ministrations: 0,
       lastMinistration: new Date(),
     };
+  }
+
+  abrirModalNuevoRegistro(joven: Joven): void {
+    const dialogRef = this.dialog.open(NuevoRegistroComponent, { data: joven });
+    dialogRef
+      .afterClosed()
+      .subscribe({ next: (res: any) => this.emisor.emit(true) });
   }
 }

@@ -1,4 +1,5 @@
 <div class="contenedor-action">
+  <div class="total-actions">Total: {{ talentos.length }}</div>
   <div *ngFor="let talento of talentos" class="card-action">
     <div class="title-action">
       {{ talento.title }}
@@ -7,7 +8,12 @@
       {{ talento.detail }}
     </div>
     <div class="date-action">{{ talento.date | date }}</div>
+    
+    <div class="delete-action">
+     <button mat-icon-button (click)="deleteAction(talento._id || '')">
+        <mat-icon class="icon-small-action">delete</mat-icon>
+      </button>
+    </div>
     <div class="cinta"></div>
   </div>
 </div>
-
