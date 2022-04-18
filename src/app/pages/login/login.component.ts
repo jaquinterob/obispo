@@ -22,7 +22,10 @@ export class LoginComponent implements OnInit {
     this.initFormulario();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log();
+
+  }
 
   initFormulario(): void {
     this.formulario = this.fb.group({

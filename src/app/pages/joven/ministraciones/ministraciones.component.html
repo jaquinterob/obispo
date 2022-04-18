@@ -1,0 +1,12 @@
+<div class="contenedor-action">
+  <div *ngFor="let ministracion of ministraciones" class="card-action">
+    <div class="title-action">
+      {{ ministracion.title }}
+    </div>
+    <div class="detail-action">
+      {{ ministracion.detail }}
+    </div>
+    <div class="date-action">{{ ministracion.date | date }}</div>
+    <div class="cinta"></div>
+  </div>
+</div>

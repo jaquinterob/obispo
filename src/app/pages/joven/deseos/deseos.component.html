@@ -1,0 +1,12 @@
+<div class="contenedor-action">
+  <div *ngFor="let deseo of deseos" class="card-action">
+    <div class="title-action">
+      {{ deseo.title }}
+    </div>
+    <div class="detail-action">
+      {{ deseo.detail }}
+    </div>
+    <div class="date-action">{{ deseo.date | date }}</div>
+    <div class="cinta"></div>
+  </div>
+</div>

@@ -18,6 +18,9 @@ import { AgePipe } from './pipes/age.pipe';
 import { NuevoRegistroComponent } from './components/dialogs/nuevo-registro/nuevo-registro.component';
 import { DatosPersonalesComponent } from './pages/joven/datos-personales/datos-personales.component';
 import { TalentosComponent } from './pages/joven/talentos/talentos.component';
+import { MinistracionesComponent } from './pages/joven/ministraciones/ministraciones.component';
+import { DeseosComponent } from './pages/joven/deseos/deseos.component';
+import { PreocupacionesComponent } from './pages/joven/preocupaciones/preocupaciones.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { TalentosComponent } from './pages/joven/talentos/talentos.component';
     NuevoRegistroComponent,
     DatosPersonalesComponent,
     TalentosComponent,
+    MinistracionesComponent,
+    DeseosComponent,
+    PreocupacionesComponent,
   ],
   imports: [
     BrowserModule,

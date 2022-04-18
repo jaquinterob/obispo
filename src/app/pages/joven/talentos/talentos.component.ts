@@ -10,5 +10,8 @@ export class TalentosComponent implements OnInit {
   @Input() talentos!: Action[];
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log();
+
+  }
 }

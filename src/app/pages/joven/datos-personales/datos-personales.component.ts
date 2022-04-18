@@ -10,5 +10,19 @@ export class DatosPersonalesComponent implements OnInit {
   @Input() joven!: Joven;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.joven = {
+      _id: '',
+      name: '',
+      lastName: '',
+      dob: new Date(),
+      phone: '',
+      gender: '',
+      wishes: 0,
+      talents: 0,
+      concerns: 0,
+      ministrations: 0,
+      lastMinistration: new Date(),
+    };
+  }
 }
