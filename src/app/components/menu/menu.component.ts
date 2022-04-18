@@ -10,7 +10,10 @@ import { MatDialog } from '@angular/material/dialog';
 export class MenuComponent implements OnInit {
   @Output() homeEmiter = new EventEmitter<boolean>() 
   constructor(private readonly dialog: MatDialog) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log();
+
+  }
   abrirModalNuevoJoven() {
     const dialogRef = this.dialog.open(NuevoJovenComponent);
     dialogRef.afterClosed().subscribe({
