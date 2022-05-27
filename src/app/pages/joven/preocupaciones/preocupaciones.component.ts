@@ -1,4 +1,4 @@
-import { Component, ErrorHandler, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ErrorHandler, EventEmitter, Input, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/api.service';
 import { Action } from 'src/app/models/action';
@@ -8,7 +8,7 @@ import { Action } from 'src/app/models/action';
   templateUrl: './preocupaciones.component.html',
   styleUrls: ['./preocupaciones.component.scss'],
 })
-export class PreocupacionesComponent implements OnInit {
+export class PreocupacionesComponent {
   @Input() preocupaciones!: Action[];
   @Output() emisor = new EventEmitter();
   constructor(
@@ -16,9 +16,6 @@ export class PreocupacionesComponent implements OnInit {
     private readonly snack: MatSnackBar
   ) {}
 
-  ngOnInit(): void {
-    console.log();
-  }
   deleteAction(_idAction: string): void {
     this.api.deleteAction(_idAction).subscribe({
       next: (res: any) => {

@@ -1,4 +1,4 @@
-import { Component, ErrorHandler, OnInit, ViewChild } from '@angular/core';
+import { Component, ErrorHandler, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/api.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   hide = true;
   formulario!: FormGroup;
 
@@ -20,11 +20,6 @@ export class LoginComponent implements OnInit {
     private readonly router: Router
   ) {
     this.initFormulario();
-  }
-
-  ngOnInit(): void {
-    console.log();
-
   }
 
   initFormulario(): void {
@@ -44,7 +39,7 @@ export class LoginComponent implements OnInit {
           this.snack.open(res.message!, 'ok', {
             duration: 4000,
           });
-          this.reset()
+          this.reset();
         }
       },
       (error: ErrorHandler) => {
@@ -56,8 +51,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  @ViewChild('f') tagFormulario:any;
-  reset(){
-    this.tagFormulario.resetForm()
+  @ViewChild('f') tagFormulario: any;
+  reset() {
+    this.tagFormulario.resetForm();
   }
 }

@@ -1,3 +1,5 @@
+import { SubirFotoComponent } from './../../../components/dialogs/subir-foto/subir-foto.component';
+import { environment } from './../../../../environments/environment';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +13,7 @@ import { Joven } from 'src/app/models/joven';
 })
 export class DatosPersonalesComponent implements OnInit {
   @Input() joven!: Joven;
+  urlBaseImg = `./assets/loading.gif`;
   @Output() emisor = new EventEmitter();
   constructor(
     private readonly dialog: MatDialog,
@@ -31,12 +34,36 @@ export class DatosPersonalesComponent implements OnInit {
       ministrations: 0,
       lastMinistration: new Date(),
     };
+    setTimeout(() => {
+      this.setPhoto();
+    }, 2000);
+  }
+  setPhoto(): void {
+    if (this.joven.photo) {
+      this.urlBaseImg = `${environment.server}:8766/static/uploads/test/photos/${this.joven.photo}`;
+    } else {
+      if (this.joven.gender === 'M') {
+        this.urlBaseImg = './assets/user.png';
+      } else {
+        this.urlBaseImg = './assets/mujer.jpg';
+      }
+    }
   }
 
   abrirModalNuevoRegistro(joven: Joven): void {
     const dialogRef = this.dialog.open(NuevoRegistroComponent, { data: joven });
     dialogRef
-      .afterClosed()
-      .subscribe({ next: (res: any) => this.emisor.emit(true) });
+    .afterClosed()
+    .subscribe({ next: (res: any) => this.emisor.emit(true) });
+  }
+  
+  abrirModalSubirFoto(joven: Joven): void {
+    const dialogRef = this.dialog.open(SubirFotoComponent, { data: joven });
+    dialogRef.afterClosed().subscribe({
+      next: (res: any) => {
+        location.reload();
+        this.emisor.emit(true);
+      },
+    });
   }
 }

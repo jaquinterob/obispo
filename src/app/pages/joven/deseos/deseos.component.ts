@@ -1,4 +1,4 @@
-import { Component, ErrorHandler, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ErrorHandler, EventEmitter, Input, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/api.service';
 import { Action } from 'src/app/models/action';
@@ -8,17 +8,13 @@ import { Action } from 'src/app/models/action';
   templateUrl: './deseos.component.html',
   styleUrls: ['./deseos.component.scss'],
 })
-export class DeseosComponent implements OnInit {
+export class DeseosComponent {
   @Input() deseos!: Action[];
   @Output() emisor = new EventEmitter();
   constructor(
     private readonly api: ApiService,
     private readonly snack: MatSnackBar
   ) {}
-
-  ngOnInit(): void {
-    console.log();
-  }
 
   deleteAction(_idAction: string): void {
     this.api.deleteAction(_idAction).subscribe({

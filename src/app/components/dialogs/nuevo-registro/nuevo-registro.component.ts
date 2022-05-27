@@ -1,4 +1,4 @@
-import { Component, ErrorHandler, Inject, OnInit } from '@angular/core';
+import { Component, ErrorHandler, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,7 +11,7 @@ import { Select } from 'src/app/models/select';
   templateUrl: './nuevo-registro.component.html',
   styleUrls: ['./nuevo-registro.component.scss'],
 })
-export class NuevoRegistroComponent implements OnInit {
+export class NuevoRegistroComponent {
   formulario!: FormGroup;
   date = new Date();
   selectTipos: Select[] = [
@@ -31,9 +31,6 @@ export class NuevoRegistroComponent implements OnInit {
     this.initFormulario();
   }
 
-  ngOnInit(): void {
-    console.log(this.joven._id);
-  }
 
   initFormulario(): void {
     this.formulario = this.fb.group({

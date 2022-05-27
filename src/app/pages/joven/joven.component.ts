@@ -59,7 +59,7 @@ export class JovenComponent implements OnInit {
         }
       },
       error: (error: ErrorHandler) => {
-        console.log(error);
+        console.error(error);
         this.snack.open(`Error al realizar la consulta`, 'ok', {
           duration: 3000,
         });
@@ -77,7 +77,7 @@ export class JovenComponent implements OnInit {
         }
       },
       error: (error: ErrorHandler) => {
-        console.log(error);
+        console.error(error);
         this.snack.open(`Error al realizar la consulta`, 'ok', {
           duration: 3000,
         });
@@ -95,7 +95,7 @@ export class JovenComponent implements OnInit {
         }
       },
       error: (error: ErrorHandler) => {
-        console.log(error);
+        console.error(error);
         this.snack.open(`Error al realizar la consulta`, 'ok', {
           duration: 3000,
         });

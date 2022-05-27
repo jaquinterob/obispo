@@ -73,9 +73,16 @@ export class ApiService {
     );
   }
 
-  deleteAction(_id:string):Observable<any>{
-     return this.http.delete(
-       `${environment.server}:5050/api_mongo/test/action/${_id}`
-     );
+  deleteAction(_id: string): Observable<any> {
+    return this.http.delete(
+      `${environment.server}:5050/api_mongo/test/action/${_id}`
+    );
+  }
+
+  uploadPhoto(formData: FormData): Observable<any> {
+    return this.http.post(
+      `${environment.server}:5050/api_mongo/test/upload/photo`,
+      formData
+    );
   }
 }

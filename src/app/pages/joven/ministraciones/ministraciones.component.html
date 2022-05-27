@@ -1,5 +1,5 @@
 <div class="contenedor-action">
-  <div class="total-actions">Total: {{ ministraciones.length }}</div>
+  <div *ngIf="ministraciones" class="total-actions">Total: {{ ministraciones.length }}</div>
   <div *ngFor="let ministracion of ministraciones" class="card-action">
     <div class="title-action">
       {{ ministracion.title }}

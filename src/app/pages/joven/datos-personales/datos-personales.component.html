@@ -7,7 +7,8 @@
   }"
 >
   <div class="contenedor-foto">
-    <img class="foto" src="./assets/user.png" alt="" />
+    
+    <img class="foto" [src]="urlBaseImg" alt="" />
   </div>
   <div>
     <div class="nombre">{{ joven.name }}</div>
@@ -24,6 +25,14 @@
       (click)="abrirModalNuevoRegistro(joven)"
     >
       <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="agregar-foto">
+    <button
+      mat-icon-button
+      (click)="abrirModalSubirFoto(joven)"
+    >
+      <mat-icon>add_a_photo</mat-icon>
     </button>
   </div>
 </div>

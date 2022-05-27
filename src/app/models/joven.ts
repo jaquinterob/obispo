@@ -10,4 +10,5 @@ export interface Joven {
   concerns: number;
   ministrations: number;
   lastMinistration?: Date;
+  photo?: string;
 }

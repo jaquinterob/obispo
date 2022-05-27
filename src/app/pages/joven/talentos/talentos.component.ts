@@ -3,7 +3,6 @@ import {
   ErrorHandler,
   EventEmitter,
   Input,
-  OnInit,
   Output,
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +14,7 @@ import { Action } from './../../../models/action';
   templateUrl: './talentos.component.html',
   styleUrls: ['./talentos.component.scss'],
 })
-export class TalentosComponent implements OnInit {
+export class TalentosComponent {
   @Input() talentos!: Action[];
   @Output() emisor = new EventEmitter();
   constructor(
@@ -23,9 +22,6 @@ export class TalentosComponent implements OnInit {
     private readonly snack: MatSnackBar
   ) {}
 
-  ngOnInit(): void {
-    console.log();
-  }
   deleteAction(_idAction: string): void {
     this.api.deleteAction(_idAction).subscribe({
       next: (res: any) => {

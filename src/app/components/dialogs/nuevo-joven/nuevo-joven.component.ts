@@ -1,6 +1,6 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/api.service';
-import { Component, OnInit, ErrorHandler } from '@angular/core';
+import { Component, ErrorHandler } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './nuevo-joven.component.html',
   styleUrls: ['./nuevo-joven.component.scss'],
 })
-export class NuevoJovenComponent implements OnInit {
+export class NuevoJovenComponent {
   formulario!: FormGroup;
   today = new Date()
   constructor(
@@ -19,11 +19,6 @@ export class NuevoJovenComponent implements OnInit {
     private readonly dialog: MatDialog
   ) {
     this.initFormulario();
-  }
-
-  ngOnInit(): void {
-    console.log();
-    
   }
 
   initFormulario(): void {

@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
     this.api.getAllJovenes().subscribe({
       next: (res: any) => {
         this.jovenes = res.youngs;
-        console.log(this.jovenes);
       },
       error: (error: ErrorHandler) => {
         console.error(error);

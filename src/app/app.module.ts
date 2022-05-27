@@ -21,6 +21,8 @@ import { TalentosComponent } from './pages/joven/talentos/talentos.component';
 import { MinistracionesComponent } from './pages/joven/ministraciones/ministraciones.component';
 import { DeseosComponent } from './pages/joven/deseos/deseos.component';
 import { PreocupacionesComponent } from './pages/joven/preocupaciones/preocupaciones.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { SubirFotoComponent } from './components/dialogs/subir-foto/subir-foto.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { PreocupacionesComponent } from './pages/joven/preocupaciones/preocupaci
     MinistracionesComponent,
     DeseosComponent,
     PreocupacionesComponent,
+    SubirFotoComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { PreocupacionesComponent } from './pages/joven/preocupaciones/preocupaci
     ReactiveFormsModule,
     HttpClientModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    NgxDropzoneModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
   bootstrap: [AppComponent],
