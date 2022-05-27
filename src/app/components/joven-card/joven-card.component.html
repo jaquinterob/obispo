@@ -1,10 +1,10 @@
 <mat-card
-  class="card"
+  class="card animate__animated animate__fadeIn"
   [ngClass]="{ hombre: joven.gender === 'M', mujer: joven.gender === 'F' }"
 >
   <mat-card-header>
     <!-- <img mat-card-avatar src="joven.photo || ./assets/user.png" /> -->
-    <img mat-card-avatar [src]="urlBaseImg" />
+    <img class="animate__animated animate__fadeIn" mat-card-avatar [src]="urlBaseImg" />
     <mat-card-title>{{ joven.name }}</mat-card-title>
     <mat-card-subtitle>{{ joven.lastName }}</mat-card-subtitle>
   </mat-card-header>

@@ -1,16 +1,22 @@
-<h2>Subir foto</h2>
-<p>
-  para: <i> {{ joven.name }} {{ joven.lastName }}</i>
-</p>
-<ngx-dropzone (change)="onSelectPhoto($event)" [multiple]="false">
-  <ngx-dropzone-label>Arrastra y suelta aqui un archivo</ngx-dropzone-label>
-  <ngx-dropzone-preview
+<div>
+
+  <h2>Subir foto</h2>
+  <p>
+    para: <i> {{ joven.name }} {{ joven.lastName }}</i>
+  </p>
+  <ngx-dropzone (change)="onSelectPhoto($event)" [multiple]="false">
+    <ngx-dropzone-label>Tomar una foto o subir archivo</ngx-dropzone-label>
+    <ngx-dropzone-preview
     *ngFor="let f of filePhoto"
     [removable]="true"
     (removed)="onRemovePhoto(f)"
-  >
+    >
     <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
   </ngx-dropzone-preview>
 </ngx-dropzone>
 <br>
 <button (click)="sendPhoto()" mat-raised-button class="full-width" color="primary">Guardar</button>
+<div class="loader">
+  <mat-progress-bar *ngIf="loader" mode="indeterminate"></mat-progress-bar>
+</div>
+</div>

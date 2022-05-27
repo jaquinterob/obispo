@@ -9,7 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './subir-foto.component.html',
   styleUrls: ['./subir-foto.component.scss'],
 })
-export class SubirFotoComponent{
+export class SubirFotoComponent {
+  loader = false;
   filePhoto: File[] = [];
   constructor(
     @Inject(MAT_DIALOG_DATA) public joven: Joven,
@@ -59,17 +60,20 @@ export class SubirFotoComponent{
   }
 
   sendPhoto(): void {
+    this.loader = true;
     const formData = new FormData();
     formData.append('photo', this.filePhoto[0]);
     formData.append('_id', this.joven._id);
     this.apiService.uploadPhoto(formData).subscribe({
       next: (res: any) => {
+        this.loader = false;
         this.snack.open(res.message, 'ok', { duration: 3000 });
         if (res.ok) {
           this.dialog.closeAll();
         }
       },
       error: (error: ErrorHandler) => {
+        this.loader = false;
         console.error(error);
         this.snack.open(`Error al subir imagen al servidor`, 'ok', {
           duration: 3000,

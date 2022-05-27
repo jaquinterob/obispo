@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="card animate__animated animate__fadeIn" color="primary">
   <span>Gestion del Obispo</span>
   <span class="example-spacer"></span>
   <button
@@ -16,6 +16,10 @@
     <button (click)="abrirModalNuevoJoven()" mat-menu-item>
       <mat-icon>person_add</mat-icon>
       <span>Agregar Joven</span>
+    </button>
+    <button (click)="salir()" mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Salir</span>
     </button>
   </mat-menu>
 </mat-toolbar>
