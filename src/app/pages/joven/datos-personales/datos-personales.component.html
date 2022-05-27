@@ -13,6 +13,14 @@
   <div>
     <div class="nombre">{{ joven.name }}</div>
     <div class="apellidos">{{ joven.lastName }}</div>
+    <div [ngClass]="{parpadea:alert}" class="ultima-ministracion">
+      Última ministración:
+      <em style="color: #a8b6ff">{{
+        (joven.lastMinistration | date) || "No registra"
+      }} <span *ngIf="diasDesdeLaUltimaMinistracion > 0"
+          >[ {{ diasDesdeLaUltimaMinistracion }} {{diasDesdeLaUltimaMinistracion > 1 ?'días':'día ' }} ]</span
+        ></em>
+    </div>
     <div class="contenedor-telefono">
       <span>{{ joven.phone }}</span
       ><img class="icon-w" src="./assets/w.png" alt="" />

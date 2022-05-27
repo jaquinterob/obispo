@@ -14,6 +14,8 @@ import { Joven } from 'src/app/models/joven';
 export class DatosPersonalesComponent implements OnInit {
   @Input() joven!: Joven;
   urlBaseImg = `./assets/loading.gif`;
+  alert = false;
+  diasDesdeLaUltimaMinistracion = 0;
   @Output() emisor = new EventEmitter();
   constructor(
     private readonly dialog: MatDialog,
@@ -35,6 +37,7 @@ export class DatosPersonalesComponent implements OnInit {
       lastMinistration: new Date(),
     };
     setTimeout(() => {
+      this.alertValidation();
       this.setPhoto();
     }, 2000);
   }
@@ -52,11 +55,14 @@ export class DatosPersonalesComponent implements OnInit {
 
   abrirModalNuevoRegistro(joven: Joven): void {
     const dialogRef = this.dialog.open(NuevoRegistroComponent, { data: joven });
-    dialogRef
-    .afterClosed()
-    .subscribe({ next: (res: any) => this.emisor.emit(true) });
+    dialogRef.afterClosed().subscribe({
+      next: (res: any) => {
+        this.emisor.emit(true);
+        location.reload();
+      },
+    });
   }
-  
+
   abrirModalSubirFoto(joven: Joven): void {
     const dialogRef = this.dialog.open(SubirFotoComponent, { data: joven });
     dialogRef.afterClosed().subscribe({
@@ -65,5 +71,20 @@ export class DatosPersonalesComponent implements OnInit {
         this.emisor.emit(true);
       },
     });
+  }
+
+  alertValidation(): void {
+    if (this.joven.lastMinistration) {
+      const fechaInicio = new Date(this.joven.lastMinistration).getTime();
+      const fechaFin = new Date(new Date()).getTime();
+      const diff = fechaFin - fechaInicio;
+      const diasTranscurridos = diff / (1000 * 60 * 60 * 24);
+      this.diasDesdeLaUltimaMinistracion = Math.floor(diasTranscurridos);
+      if (this.diasDesdeLaUltimaMinistracion > 8) {
+        this.alert = true;
+      }
+    } else {
+      this.alert = true;
+    }
   }
 }

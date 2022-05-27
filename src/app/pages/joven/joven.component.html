@@ -1,13 +1,17 @@
 <app-menu></app-menu>
-<app-datos-personales (emisor)="refresh($event)" [joven]="joven"></app-datos-personales>
-<mat-stepper class="card animate__animated animate__fadeIn" orientation="vertical">
+<app-datos-personales
+  (emisor)="refresh($event)"
+  [joven]="joven"
+></app-datos-personales>
+<mat-stepper
+  class="card animate__animated animate__fadeIn"
+  orientation="vertical"
+>
   <mat-step>
-    <ng-template matStepLabel
-      >Ministraciones</ng-template
-    >
+    <ng-template matStepLabel>Ministraciones</ng-template>
     <ng-template matStepContent>
       <app-ministraciones
-      (emisor)="refresh($event)"
+        (emisor)="refresh($event)"
         [ministraciones]="ministraciones"
       ></app-ministraciones>
     </ng-template>
@@ -15,7 +19,10 @@
   <mat-step>
     <ng-template matStepLabel>Talentos</ng-template>
     <ng-template matStepContent>
-      <app-talentos (emisor)="refresh($event)" [talentos]="talentos"></app-talentos>
+      <app-talentos
+        (emisor)="refresh($event)"
+        [talentos]="talentos"
+      ></app-talentos>
     </ng-template>
   </mat-step>
   <mat-step>
@@ -25,12 +32,10 @@
     </ng-template>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel
-      >Preocupaciones</ng-template
-    >
+    <ng-template matStepLabel>Preocupaciones</ng-template>
     <ng-template matStepContent>
       <app-preocupaciones
-      (emisor)="refresh($event)"
+        (emisor)="refresh($event)"
         [preocupaciones]="preocupaciones"
       ></app-preocupaciones>
     </ng-template>

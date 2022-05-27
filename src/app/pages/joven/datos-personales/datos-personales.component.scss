@@ -62,12 +62,12 @@
   color: white;
 }
 .agregar-foto {
-    text-align: center;
-    position: absolute;
-    top: 98px;
-    right: 14px;
-    background-color: #b53fab00;
-    color: #ffc716;
+  text-align: center;
+  position: absolute;
+  top: 98px;
+  right: 14px;
+  background-color: #b53fab00;
+  color: #ffc716;
 }
 
 .contenedor-telefono {
@@ -79,4 +79,61 @@
 .icon-w {
   height: 16px;
   width: 16px;
+}
+
+.ultima-ministracion {
+  font-size: 11px;
+  color: chartreuse;
+  position: absolute;
+  top: -18px;
+  left: 16px;
+}
+
+.parpadea {
+  color: #ffa900 !important;
+  animation-name: parpadeo;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name: parpadeo;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

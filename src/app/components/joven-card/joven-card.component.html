@@ -1,10 +1,17 @@
 <mat-card
   class="card animate__animated animate__fadeIn"
-  [ngClass]="{ hombre: joven.gender === 'M', mujer: joven.gender === 'F' }"
+  [ngClass]="{
+    hombre: joven.gender === 'M',
+    mujer: joven.gender === 'F'
+  }"
 >
   <mat-card-header>
     <!-- <img mat-card-avatar src="joven.photo || ./assets/user.png" /> -->
-    <img class="animate__animated animate__fadeIn" mat-card-avatar [src]="urlBaseImg" />
+    <img
+      class="animate__animated animate__fadeIn"
+      mat-card-avatar
+      [src]="urlBaseImg"
+    />
     <mat-card-title>{{ joven.name }}</mat-card-title>
     <mat-card-subtitle>{{ joven.lastName }}</mat-card-subtitle>
   </mat-card-header>
@@ -45,11 +52,14 @@
       </div>
     </div>
     <div class="ultima-ministracion">Celular: {{ joven.phone }}</div>
-    <div class="ultima-ministracion">
+    <div [ngClass]="{ parpadea: alert }" class="ultima-ministracion">
       Última ministración:
-      <em style="color: gray">{{
-        (joven.lastMinistration | date) || "No registra"
-      }}</em>
+      <em style="color: gray;font-size: 12px;"
+        >{{ (joven.lastMinistration | date) || "No registra" }}
+        <span *ngIf="diasDesdeLaUltimaMinistracion > 0"
+          >[ {{ diasDesdeLaUltimaMinistracion }} {{diasDesdeLaUltimaMinistracion > 1 ?'días':'día ' }} ]</span
+        ></em
+      >
     </div>
     <div class="edad">{{ joven.dob | age }} años</div>
     <div class="btn-action">
@@ -69,13 +79,13 @@
           <mat-icon color="primary">notes</mat-icon>
           <span>Registrar acción</span>
         </button>
-         <button (click)="abrirDialogSubirFoto(joven)" mat-menu-item>
+        <button (click)="abrirDialogSubirFoto(joven)" mat-menu-item>
           <mat-icon color="primary">account_box</mat-icon>
           <span>Subir foto</span>
         </button>
         <button (click)="eliminarJoven(joven._id)" mat-menu-item>
           <mat-icon color="warn">delete_forever</mat-icon>
-          <span style="color:red">Eliminar Joven</span>
+          <span style="color: red">Eliminar Joven</span>
         </button>
       </mat-menu>
     </div>

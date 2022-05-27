@@ -1,6 +1,6 @@
 import { environment } from './../../../environments/environment';
 import { SubirFotoComponent } from './../dialogs/subir-foto/subir-foto.component';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
@@ -22,8 +22,9 @@ import { NuevoRegistroComponent } from '../dialogs/nuevo-registro/nuevo-registro
 })
 export class JovenCardComponent implements OnInit {
   @Input() joven!: Joven;
-  // urlBaseImg = `./assets/giphy.webp`;
   urlBaseImg = `./assets/loading1.gif`;
+  alert = false;
+  diasDesdeLaUltimaMinistracion = 0;
   @Output() homeEmiter = new EventEmitter<boolean>();
   constructor(
     private readonly dialog: MatDialog,
@@ -36,12 +37,27 @@ export class JovenCardComponent implements OnInit {
     setTimeout(() => {
       this.setPhoto();
     }, 3000);
+    this.alertValidation();
+  }
+  alertValidation(): void {
+    if (this.joven.lastMinistration) {
+      const fechaInicio = new Date(this.joven.lastMinistration).getTime();
+      const fechaFin = new Date(new Date()).getTime();
+      const diff = fechaFin - fechaInicio;
+      const diasTranscurridos = diff / (1000 * 60 * 60 * 24);
+      this.diasDesdeLaUltimaMinistracion = Math.floor(diasTranscurridos);
+      if (this.diasDesdeLaUltimaMinistracion > 8) {
+        this.alert = true;
+      }
+    } else {
+      this.alert = true;
+    }
   }
 
   setPhoto(): void {
     if (this.joven.photo) {
       this.urlBaseImg = `${environment.server}:8766/static/uploads/test/photos/${this.joven.photo}`;
-    }else{
+    } else {
       if (this.joven.gender === 'M') {
         this.urlBaseImg = './assets/user.png';
       } else {
@@ -55,6 +71,7 @@ export class JovenCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (res: any) => {
         this.homeEmiter.emit(true);
+        window.location.reload();
       },
     });
   }
@@ -64,6 +81,7 @@ export class JovenCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (res: any) => {
         this.homeEmiter.emit(true);
+        window.location.reload();
       },
     });
   }
