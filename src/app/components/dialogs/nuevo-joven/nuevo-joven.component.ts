@@ -1,3 +1,4 @@
+import { LocalstorageService } from './../../../localstorage.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/api.service';
 import { Component, ErrorHandler } from '@angular/core';
@@ -15,6 +16,7 @@ export class NuevoJovenComponent {
   constructor(
     private readonly fb: FormBuilder,
     private readonly api: ApiService,
+    private readonly localstorageService:LocalstorageService,
     private readonly snack: MatSnackBar,
     private readonly dialog: MatDialog
   ) {
@@ -22,12 +24,16 @@ export class NuevoJovenComponent {
   }
 
   initFormulario(): void {
+    const dataObispo = JSON.parse(
+      this.localstorageService.decrypt(localStorage.getItem('obispo') || 'null')
+    );
     this.formulario = this.fb.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       dob: ['', Validators.required],
       phone: ['', Validators.required],
       gender: ['', Validators.required],
+      ward: [dataObispo['ward']],
     });
   }
 

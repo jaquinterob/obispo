@@ -1,9 +1,9 @@
+import { LocalstorageService } from './../../localstorage.service';
 import { Component, ErrorHandler, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly api: ApiService,
+    private readonly localstorageService:LocalstorageService,
     private readonly snack: MatSnackBar,
     private readonly router: Router
   ) {
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   sesionValidate(): void {
-    const dataObispo = JSON.parse(this.decrypt(localStorage.getItem('obispo') || 'null'));
+    const dataObispo = JSON.parse(this.localstorageService.decrypt(localStorage.getItem('obispo') || 'null'));
     console.log(dataObispo);
     if (dataObispo) {
       this.api.login(dataObispo).subscribe(
@@ -87,28 +88,8 @@ export class LoginComponent implements OnInit {
   }
 
   private saveSesionInLocalStorage() {
-    const formularioText = this.encrypt(JSON.stringify(this.formulario.value));
+    const formularioText = this.localstorageService.encrypt(JSON.stringify(this.formulario.value));
     localStorage.setItem('obispo', formularioText);
   }
-
-  private encrypt(texto: string): string {
-    try {
-      return CryptoJS.AES.encrypt(JSON.stringify(texto), 'coopsana').toString();
-    } catch (error) {
-      console.error(error);
-      return '';
-    }
-  }
-  private decrypt(texto: string): string {
-    try {
-      const bytes = CryptoJS.AES.decrypt(texto, 'coopsana');
-      if (bytes.toString()) {
-        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-      }
-      return texto;
-    } catch (error) {
-      console.error(error);
-      return '';
-    }
-  }
+  
 }
