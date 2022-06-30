@@ -26,8 +26,10 @@ export class ApiService {
     );
   }
 
-  getAllJovenes(): Observable<any> {
-    return this.http.get(`${environment.server}:5050/api_mongo/test/young`);
+  getAllJovenes(ward: string): Observable<any> {
+    return this.http.get(
+      `${environment.server}:5050/api_mongo/test/young/all/${ward}`
+    );
   }
 
   guardarNuevoRegistro(action: Action): Observable<any> {

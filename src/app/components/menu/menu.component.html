@@ -1,11 +1,7 @@
 <mat-toolbar class="card animate__animated animate__fadeIn" color="primary">
-  <span>Gestión del Obispo</span>
+  <span>Gestión Barrio <span style="color: #00f5ff;">{{ward | titlecase}}</span></span>
   <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    [matMenuTriggerFor]="menu"
-    aria-label="Example icon-button with a menu"
-  >
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu color="primary" #menu="matMenu">
